@@ -8,31 +8,32 @@ let progress = document.getElementById("progress");
 let audio = document.getElementById("audio");
 let progressBar = document.getElementById("progressBar");
 let counter = 0;
+let isChangingTrack = false;
 
 let data = [
   {
     music: "Music/Mirom Az E Shar.mp3",
     cover: "images/Mirom Az E Shar.jfif",
     trackName: "Mirom Az E Shar",
-    artist: "Fazaei x Ekhtar",
+    artist: "Fazaei ft Ekhtar",
   },
   {
     music: "Music/1998.mp3",
     cover: "images/1998.jfif",
     trackName: "1998",
-    artist: "Rail47 x Ramin6nass",
+    artist: "Rail47 ft Ramin6nass",
   },
   {
     music: "Music/Asnad Rap.mp3",
     cover: "images/Asnad Rap.jfif",
     trackName: "Asnad Rap",
-    artist: "Fazaei x Ekhtar",
+    artist: "Fazaei ft Ekhtar",
   },
   {
     music: "Music/Ay Dade Bi Dad.mp3",
     cover: "images/Ay Dad Bi Dad.jfif",
     trackName: "Ay Dad Bi Dad",
-    artist: "Amir x Loy",
+    artist: "Amir ft Loy",
   },
   {
     music: "Music/Bad Vibe.mp3",
@@ -50,7 +51,7 @@ let data = [
     music: "Music/Khale Selah.mp3",
     cover: "images/Khale Selah.jfif",
     trackName: "Khale Selah",
-    artist: "Amir x Loy",
+    artist: "Amir ft Loy",
   },
   {
     music: "Music/Soul.mp3",
@@ -67,9 +68,9 @@ let data = [
 ];
 
 function set(numb) {
+  audio.pause();
   audio.setAttribute("src", data[numb]["music"]);
   image.style.background = `url('${data[numb]["cover"]}') center/cover`;
-  image.style.background = "url(+ " + data[numb]["cover"] + ") center/cover";
   title.innerText = data[numb]["trackName"];
   name.innerText = data[numb]["artist"];
   audio.play();
@@ -78,23 +79,41 @@ function set(numb) {
 set(counter);
 
 next.addEventListener("click", function () {
+  if (isChangingTrack) return;
+  isChangingTrack = true;
+
   toggler.style.background = `url('icons/pause.png') center / cover`;
   if (counter >= data.length - 1) {
     counter = 0;
   } else {
     counter++;
   }
+
   set(counter);
+
+  setTimeout(() => {
+    isChangingTrack = false;
+  }, 1000);
 });
+
 previous.addEventListener("click", function () {
+  if (isChangingTrack) return;
+  isChangingTrack = true;
+
   toggler.style.background = `url('icons/pause.png') center / cover`;
   if (counter <= 0) {
     counter = data.length - 1;
   } else {
     counter--;
   }
+
   set(counter);
+
+  setTimeout(() => {
+    isChangingTrack = false;
+  }, 1000);
 });
+
 toggler.addEventListener("click", function () {
   if (audio.paused) {
     audio.play();
@@ -105,10 +124,16 @@ toggler.addEventListener("click", function () {
   }
 });
 
+audio.addEventListener("ended", function () {
+  counter = (counter + 1) % data.length;
+  set(counter);
+});
+
 audio.addEventListener("timeupdate", function () {
   let progress = (audio.currentTime / audio.duration) * 100;
   progressBar.value = progress;
 });
+
 progressBar.addEventListener("input", function () {
   let newTime = (progressBar.value / 100) * audio.duration;
   audio.currentTime = newTime;
