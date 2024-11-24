@@ -14,25 +14,25 @@ let data = [
     music: "Music/Mirom Az E Shar.mp3",
     cover: "images/Mirom Az E Shar.jfif",
     trackName: "Mirom Az E Shar",
-    artist: "Fazaei ft Ekhtar",
+    artist: "Fazaei x Ekhtar",
   },
   {
     music: "Music/1998.mp3",
     cover: "images/1998.jfif",
     trackName: "1998",
-    artist: "Rail47 ft Ramin6nass",
+    artist: "Rail47 x Ramin6nass",
   },
   {
     music: "Music/Asnad Rap.mp3",
     cover: "images/Asnad Rap.jfif",
     trackName: "Asnad Rap",
-    artist: "Fazaei ft Ekhtar",
+    artist: "Fazaei x Ekhtar",
   },
   {
     music: "Music/Ay Dade Bi Dad.mp3",
     cover: "images/Ay Dad Bi Dad.jfif",
     trackName: "Ay Dad Bi Dad",
-    artist: "Amir ft Loy",
+    artist: "Amir x Loy",
   },
   {
     music: "Music/Bad Vibe.mp3",
@@ -50,7 +50,7 @@ let data = [
     music: "Music/Khale Selah.mp3",
     cover: "images/Khale Selah.jfif",
     trackName: "Khale Selah",
-    artist: "Amir ft Loy",
+    artist: "Amir x Loy",
   },
   {
     music: "Music/Soul.mp3",
