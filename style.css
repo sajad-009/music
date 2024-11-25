@@ -115,7 +115,7 @@ button:active {
   width: 15px;
   height: 15px;
   border-radius: 15%;
-  background: #13151d;
+  background: #000;
   cursor: pointer;
 }
 
