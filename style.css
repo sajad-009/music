@@ -149,4 +149,6 @@ button:active {
     width: 310px;
     height: 310px;
   }
+  #image::after {
+transform: scale(5);
 }
