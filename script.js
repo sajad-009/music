@@ -8,7 +8,6 @@ let progress = document.getElementById("progress");
 let audio = document.getElementById("audio");
 let progressBar = document.getElementById("progressBar");
 let counter = 0;
-let isChangingTrack = false;
 
 let data = [
   {
@@ -73,15 +72,11 @@ function set(numb) {
   image.style.background = `url('${data[numb]["cover"]}') center/cover`;
   title.innerText = data[numb]["trackName"];
   name.innerText = data[numb]["artist"];
-  audio.play();
 }
 
 set(counter);
 
 next.addEventListener("click", function () {
-  if (isChangingTrack) return;
-  isChangingTrack = true;
-
   toggler.style.background = `url('icons/pause.png') center / cover`;
   if (counter >= data.length - 1) {
     counter = 0;
@@ -90,16 +85,9 @@ next.addEventListener("click", function () {
   }
 
   set(counter);
-
-  setTimeout(() => {
-    isChangingTrack = false;
-  }, 1000);
 });
 
 previous.addEventListener("click", function () {
-  if (isChangingTrack) return;
-  isChangingTrack = true;
-
   toggler.style.background = `url('icons/pause.png') center / cover`;
   if (counter <= 0) {
     counter = data.length - 1;
@@ -108,10 +96,6 @@ previous.addEventListener("click", function () {
   }
 
   set(counter);
-
-  setTimeout(() => {
-    isChangingTrack = false;
-  }, 1000);
 });
 
 toggler.addEventListener("click", function () {
