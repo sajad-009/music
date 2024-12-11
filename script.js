@@ -83,7 +83,7 @@ next.addEventListener("click", function () {
   } else {
     counter++;
   }
-
+  toggler.style.background = `url('icons/play.png') center / cover`;
   set(counter);
 });
 
@@ -94,7 +94,7 @@ previous.addEventListener("click", function () {
   } else {
     counter--;
   }
-
+  toggler.style.background = `url('icons/play.png') center / cover`;
   set(counter);
 });
 
