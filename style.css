@@ -148,7 +148,9 @@ button:active {
   #image {
     width: 310px;
     height: 310px;
+    transition: 0;
   }
   #image::after {
 transform: scale(5);
+    transition: 0;
 }
